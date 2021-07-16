@@ -13,9 +13,7 @@ class Quiz extends Component {
       qNumber: 0,
       timer: { min: 2, sec: 60 },
       countDownTimer: null,
-      selectOpsn: null,
       correctAns: [],
-      style: ""
     }
   }
 
@@ -32,13 +30,10 @@ class Quiz extends Component {
     this.setState({ qNumber: this.state.qNumber + 1 })
     const curQues = this.state.allQsn.filter((val, index) => index === this.state.qNumber)
     this.setState({ curQues: curQues })
-    this.setState({ selectOpsn: null })
   }
 
   prevQuestion = () => {
     this.setState({ qNumber: this.state.qNumber - 1 })
-    console.log("correctAns", this.state.correctAns[this.state.qNumber])
-    console.log(this.props.correctAnsCount, "kkkkkkkkkk")
   }
 
   seletOption = (opsnindex, qsnID, opsn, ans) => {
@@ -46,7 +41,7 @@ class Quiz extends Component {
     let myVar = correctAns.filter(val => val.qsnid !== qsnID)
 
     this.setState({ correctAns: [...myVar, { qsnid: qsnID, opsn, ans }] }, () => { this.props.getCorrectAnsCount(this.state.correctAns) })
-    this.setState({ selectOpsn: opsnindex });
+
   }
 
   quizTimer = () => {
