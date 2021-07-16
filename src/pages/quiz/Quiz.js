@@ -29,7 +29,6 @@ class Quiz extends Component {
   nextQuestion = () => {
     this.setState({ qNumber: this.state.qNumber + 1 })
     const curQues = this.state.allQsn.filter((val, index) => index === this.state.qNumber)
-    this.setState({ curQues: curQues })
   }
 
   prevQuestion = () => {
